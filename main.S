@@ -397,7 +397,7 @@ downwall_b:
 	ret
 downwall2:	
 	mov	w10, #1
-	strb	w10, [x11] //jos dir1 -> dir3
+	strb	w10, [x11]
 	ret
 
 update_dir:
