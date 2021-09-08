@@ -37,18 +37,18 @@ lfb_init:
 	mov	w3, #8
 	str	w3, [x2], #4  //mbox[3]
 	str	w3, [x2], #4  //mbox[4]
-	mov	w1, #1024	//FrameBufferInfo.width
+	mov	w1, #1024	//width
 	str	w1, [x2], #4  //mbox[5]
-	mov	w1, #768	//FrameBufferInfo.height
+	mov	w1, #768	//height
 	str	w1, [x2], #4  //mbox[6]
 
 	ldr	w1, =0x48004  //set virt wh
 	str	w1, [x2], #4  //mbox[7]
 	str	w3, [x2], #4  //[8]
 	str	w3, [x2], #4  //[9]
-	mov	w1, #1024  //FrameBufferInfo.virtual_width
+	mov	w1, #1024  //width
 	str	w1, [x2], #4 //[10]  
-	mov	w1, #768  //FrameBufferInfo.virtual_height
+	mov	w1, #768  //height
 	str	w1, [x2], #4 //[11]
 
 	ldr	w1, =0x48009  //set virt offset
@@ -63,7 +63,7 @@ lfb_init:
 	mov	w4, #4
 	str	w4, [x2], #4 //[18]
 	str	w4, [x2], #4 //[19]
-	mov	w1, #32  //FrameBufferInfo.depth
+	mov	w1, #32  //depth
 	str	w1, [x2], #4 //[20]
 
 	ldr	w1, =0x48006  //set pixel order
@@ -73,7 +73,7 @@ lfb_init:
 	mov	w1, #1
 	str	w1, [x2], #4 //[24]  //RGB, not BGR
 
-	ldr	w1, =0x40001  //get framebuffer, gets alignment or request
+	ldr	w1, =0x40001  //get framebuffer, get alignment or request
 	str	w1, [x2], #4  //[25]
 	str	w3, [x2], #4  //[26]
 	str	w3, [x2], #4  //[27]
@@ -87,7 +87,7 @@ lfb_init:
 	str	w4, [x2], #4  //[32]	
 	str	wzr, [x2], #4  //[33]
 
-	str	wzr, [x2]  //[34] //MBOX_TAG_LAST (0)
+	str	wzr, [x2]  //[34]
 
 	adrp	x2, mbox
 	add     x2, x2, :lo12:mbox
